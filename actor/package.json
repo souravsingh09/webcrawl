@@ -1,0 +1,14 @@
+{
+  "name": "scrapymed",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "run med"
+  },
+  "keywords": [
+    "med"
+  ],
+  "author": "sourav",
+  "license": "ISC"
+}
