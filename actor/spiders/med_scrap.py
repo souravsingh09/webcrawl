@@ -31,9 +31,9 @@ class PostsSpider(scrapy.Spider):
         # try:
         #title_detail = response.css("section.abstract p.chapter-para::text").extract_first()
         #print("Found details: " + title_detail )
-
-            # yield{
-            output = {
+        #//    "apify": "^0.15.5",
+            yield{
+            # output = {
                 'url': response.url,
                 'Introduction': response.css("div.title::text").get(),
                 'Introduction_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text").get()),
