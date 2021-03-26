@@ -67,6 +67,6 @@ class PostsSpider(scrapy.Spider):
 
             }
 
-            apify.pushData(output)
+            #apify.pushData(output)
 
 
