@@ -1,8 +1,8 @@
 from unittest import result
 
-import apify
 import scrapy
 import unidecode
+import apify
 from scrapy.exceptions import IgnoreRequest
 from scrapy_proxy_pool.policy import BanDetectionPolicy
 
@@ -52,9 +52,9 @@ class PostsSpider(scrapy.Spider):
 
             }
 
-            yield result
+            #yield result
 
             #Apify.pushData(result)
-            #apify.pushData(output)
+            apify.pushData(result)
 
 
