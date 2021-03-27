@@ -66,7 +66,7 @@ class PostsSpider(scrapy.Spider):
                 # 'Conclusion_text': response.css("section.abstract p.chapter-para::text")[4].get().replace(''' " ''', )
 
             }
-            # Apify.pushData(output)
-            apify.pushData(output)
+            Apify.pushData(output)
+            #apify.pushData(output)
 
 
