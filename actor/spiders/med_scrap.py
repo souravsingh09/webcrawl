@@ -15,18 +15,21 @@ class PostsSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-
+        print("Start")
         next_page = response.css('li.PagedList-skipToNext a').attrib['href']
-
+        print("Start 1")
         if next_page is not None:
+            print("Start 2")
             for post in response.css('h5.customLink.item-title'):
-
+                print("Start 3")
                 full_url = response.urljoin('https://academic.oup.com' + post.css('a').attrib['href'])
-
+                print("Start 4")
                 try:
+                    print("Start 5 ")
                     yield scrapy.Request(full_url, callback=self.get_details)
-
+                    print("Start 6")
                     yield response.follow(next_page,callback=self.parse)
+                    print("Start 7")
                 except :
                     print("lol")
 
@@ -40,7 +43,7 @@ class PostsSpider(scrapy.Spider):
         #
             #yield{
             try :
-
+                print("Start 9")
                 result = {
                     'url': response.url,
                     'Introduction': response.css("div.title::text").get(),
@@ -59,6 +62,7 @@ class PostsSpider(scrapy.Spider):
                     'Conclusion_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text")[4].get())
 
                 }
+                print("Start 10")
                 yield result
             except:
                 print("out of syl")
