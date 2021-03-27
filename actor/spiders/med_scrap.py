@@ -22,9 +22,13 @@ class PostsSpider(scrapy.Spider):
             for post in response.css('h5.customLink.item-title'):
 
                 full_url = response.urljoin('https://academic.oup.com' + post.css('a').attrib['href'])
-                yield scrapy.Request(full_url, callback=self.get_details)
 
-                yield response.follow(next_page,callback=self.parse)
+                try:
+                    yield scrapy.Request(full_url, callback=self.get_details)
+
+                    yield response.follow(next_page,callback=self.parse)
+                except :
+                    print("lol")
 
 
     def get_details(self, response):
