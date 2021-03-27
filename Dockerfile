@@ -20,8 +20,6 @@ COPY . ./
 RUN npm install
 
 # replace with pip install apify
-RUN pip install apify
-RUN pip install nodejs
 RUN pip install requests
 RUN pip install scrapy
 RUN pip install scrapy-proxy-pool==0.1.4
