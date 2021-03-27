@@ -39,41 +39,32 @@ class PostsSpider(scrapy.Spider):
         #print("Found details: " + title_detail )
         #
             #yield{
-            result = {
-                'url': response.url,
-                'Introduction': response.css("div.title::text").get(),
-                'Introduction_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text").get()),
+            try :
 
-                'Aim': response.css("div.title::text")[1].get(),
-                'Aim_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text")[1].get()),
+                result = {
+                    'url': response.url,
+                    'Introduction': response.css("div.title::text").get(),
+                    'Introduction_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text").get()),
 
-                'Methods': response.css("div.title::text")[2].get(),
-                'Methods_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text")[2].get()),
+                    'Aim': response.css("div.title::text")[1].get(),
+                    'Aim_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text")[1].get()),
 
-                'Result': response.css("div.title::text")[3].get(),
-                'Result_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text")[3].get()),
+                    'Methods': response.css("div.title::text")[2].get(),
+                    'Methods_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text")[2].get()),
 
-                'Conclusion': response.css("div.title::text")[4].get(),
-                'Conclusion_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text")[4].get())
+                    'Result': response.css("div.title::text")[3].get(),
+                    'Result_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text")[3].get()),
 
-                # 'Introduction': response.css("div.title::text").get(),
-                # 'Introduction_text': response.css("section.abstract p.chapter-para::text").get().replace(''' " ''', ),
+                    'Conclusion': response.css("div.title::text")[4].get(),
+                    'Conclusion_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text")[4].get())
 
-                # 'Aim': response.css("div.title::text")[1].get(),
-                # 'Aim_text': response.css("section.abstract p.chapter-para::text")[1].get().replace(''' " ''', ),
-                #
-                # 'Methods': response.css("div.title::text")[2].get(),
-                # 'Methods_text': response.css("section.abstract p.chapter-para::text")[2].get().replace(''' " ''', ),
-                #
-                # 'Result': response.css("div.title::text")[3].get(),
-                # 'Result_text': response.css("section.abstract p.chapter-para::text")[3].get().replace(''' " ''', ),
-                #
-                # 'Conclusion': response.css("div.title::text")[4].get(),
-                # 'Conclusion_text': response.css("section.abstract p.chapter-para::text")[4].get().replace(''' " ''', )
+                }
+                yield result
+            except:
+                print("out of syl")
 
-            }
 
-            yield result
+
             #Apify.pushData(result)
             #apify.pushData(output)
 
