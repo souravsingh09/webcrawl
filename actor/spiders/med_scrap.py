@@ -1,3 +1,5 @@
+from unittest import result
+
 import apify
 import scrapy
 import unidecode
@@ -33,7 +35,7 @@ class PostsSpider(scrapy.Spider):
         #print("Found details: " + title_detail )
         #
             #yield{
-            output = {
+            result = {
                 'url': response.url,
                 'Introduction': response.css("div.title::text").get(),
                 'Introduction_text': unidecode.unidecode(response.css("section.abstract p.chapter-para::text").get()),
@@ -66,7 +68,9 @@ class PostsSpider(scrapy.Spider):
                 # 'Conclusion_text': response.css("section.abstract p.chapter-para::text")[4].get().replace(''' " ''', )
 
             }
-            Apify.pushData(output)
+
+            yield result
+            #Apify.pushData(result)
             #apify.pushData(output)
 
 
